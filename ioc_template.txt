@@ -1,0 +1,12 @@
+RELEASE= {{ release }}
+ENGINEER= {{ engineer }}
+LOCATION={{ location }}
+IOC_PV=IOC:{{ ioc_pv }}
+ARCH={{ arch }}
+
+PORT(BASE={{ base }},SERIAL="{{ serial }}",DEBUG=)
+
+{% for item in range(seq) %}
+{{ ioc_model }}(PORT0,ADDRESS={{ loop.index }})
+ALIAS(RECORD="{{ record }}:M{{ loop.index }}",ALIAS="{{ alias }}")
+{% endfor %}
