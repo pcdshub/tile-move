@@ -1,0 +1,13 @@
+RELEASE={{ release }}
+ENGINEER={{ ioc_engineer }}
+LOCATION={{ location }}
+IOC_PV=IOC:{{ ioc_base }}
+
+{{ioc_type}}(NAME="{{ioc_type}}",IP="{{ioc_ip}}",PORT={{ port }},SLAVES={{ slaves }})
+{% for item in range(slaves) %}
+TERMINAL_AI(EK9000="{{ioc_type}}",RECORD="{{ ioc_base }}_AI_0{{ loop.index }}",TYPE={{ type }},SLAVE={{ loop.index }},CHANNELS={{ channels }})
+{% endfor %}
+{% set env_var=["PRESS","HUMID","TEMP"]%}
+{% for i in range(slaves) %}
+ALIAS_AI(RECORD="{{ ioc_base }}_AI_{{ "01" if i<4 else "02"  }}:{{ loop.index if i<4 else "3"}}",ALIAS="{{ ioc_base }}:{{env_var[i]}}" if i<4 else "{{prefix}}")
+{% endfor %}
