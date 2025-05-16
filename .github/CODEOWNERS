@@ -1,0 +1,14 @@
+# default group
+* @pcdshub/las-members 
+
+# language-specific group(s)
+## PYTHON files
+*.py @pcdshub/python-reviewers @pcdshub/las-members 
+*.pyi @pcdshub/python-reviewers @pcdshub/las-members 
+*.pyc @pcdshub/python-reviewers @pcdshub/las-members 
+*.pyw @pcdshub/python-reviewers @pcdshub/las-members 
+*.pyx @pcdshub/python-reviewers @pcdshub/las-members 
+*.pyd @pcdshub/python-reviewers @pcdshub/las-members 
+
+# github folder holds administrative files
+.github/** @pcdshub/software-admin
